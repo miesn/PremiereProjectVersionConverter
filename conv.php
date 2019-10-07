@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 if (true)
   {
   if ($_FILES["file"]["error"] > 0)
@@ -57,6 +58,11 @@ if (true)
     $substr2 = 'Version="25"';
     $prproj = str_replace($substr1,$substr2,$prproj);
     //echo $prproj;
+
+    if($_POST['ifcompressoutput'] == "on"){
+      $prproj = gzencode($prproj,9);
+    }
+    
 
     $downfile = "down/" . time() . "-" . $_FILES["file"]["name"];
     $myfile = fopen($downfile, "w") or die("Unable to open file!");

@@ -207,19 +207,27 @@
             </div>
           </div>
 
-          <div class="inner cover">
-            <h1 class="cover-heading">Upload and Wait and Download!</h1>
-            <br/>
-            <p class="lead">
-              <div id="buttonContent">
-                <a href="#" class="btn btn-lg btn-default" onclick="uploadfile()">Upload</a>
-              </div>
-            </p>
+          <form id="uploadForm" enctype="multipart/form-data">
+            <div class="inner cover">
+              <h1 class="cover-heading">Upload and Wait and Download!</h1>
+              <br/>
+              <p class="lead">
+                <div id="buttonContent">
+                  <a href="#" class="btn btn-lg btn-default" onclick="uploadfile()">Upload</a>
+                  <br>
+                </div>
+                
+                <hr/>
+                Notes:请不要上传已经经过gzip解压的prproj文件。<br>
+                <a href="https://tools.horimediagroup.com/prconv">北京服务器(国内更快)</a>
+                <br>
+                <a href="https://fhy.one/prconv">LA服务器(海外更快)</a>
+              </p>
 
 
-                <form style="visibility:hidden;" id="uploadForm" enctype="multipart/form-data">
-                  <input type="file" id="uploadBtn" name="file">
-                </form>
+              <input type="checkbox" name="ifcompressoutput" id="ifcompressoutput">启用压缩输出(测试)
+              <input type="file" id="uploadBtn" name="file" style="visibility:hidden;">
+            </form>
           </div>
 
           <div class="mastfoot">
@@ -261,6 +269,7 @@
       console.log("uploadFileDetected " + document.getElementById("uploadBtn").value);
       document.getElementById("buttonContent").innerHTML = '<a href="" class="btn btn-lg btn-info" ">Waitting</a>';
       var formData = new FormData($('#uploadForm')[0]); 
+      console.log(formData);
       $.ajax({ 
         type: 'post', 
         url: "conv.php", 
