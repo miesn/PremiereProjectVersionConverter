@@ -40,7 +40,7 @@ if (true)
     
 
     $myfile = fopen($_FILES["file"]["tmp_name"], "r") or die("Unable to open file!");
-    $prproj = gzdecode(fread($myfile,filesize("upload/" . $_FILES["file"]["name"])));
+    $prproj = gzdecode(fread($myfile,filesize($_FILES["file"]["tmp_name"])));
     fclose($myfile);
     $begin = "<Project ObjectID";
     $end = "<Node Version";
