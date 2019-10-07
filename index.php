@@ -208,13 +208,18 @@
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Upload and Download!</h1>
+            <h1 class="cover-heading">Upload and Wait and Download!</h1>
             <br/>
-            <form>
-              <p class="lead">
+            <p class="lead">
+              <div id="buttonContent">
                 <a href="#" class="btn btn-lg btn-default" onclick="uploadfile()">Upload</a>
-              </p>
-            </form>
+              </div>
+            </p>
+
+
+                <form style="visibility:hidden;" id="uploadForm" enctype="multipart/form-data">
+                  <input type="file" id="uploadBtn" name="file">
+                </form>
           </div>
 
           <div class="mastfoot">
@@ -237,12 +242,45 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
   </body>
 </html>
 
 
 <script>
+  var t1;
   function uploadfile(){
+    document.getElementById("uploadBtn").click();  
+    t1 = window.setTimeout("checkfile()",1000); 
+  }
+
+  function checkfile(){
+    if(document.getElementById("uploadBtn").value){
+      window.clearInterval(t1); 
+      console.log("uploadFileDetected " + document.getElementById("uploadBtn").value);
+      document.getElementById("buttonContent").innerHTML = '<a href="" class="btn btn-lg btn-info" ">Waitting</a>';
+      var formData = new FormData($('#uploadForm')[0]); 
+      $.ajax({ 
+        type: 'post', 
+        url: "conv.php", 
+        data: formData, 
+        cache: false, 
+        processData: false, 
+        contentType: false, 
+      }).success(function (data) { 
+        console.log(data);
+        document.getElementById("buttonContent").innerHTML = '<a href="' + 'http://<?php echo $_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];  ?>' + data + '" class="btn btn-lg btn-success" ">Rightclick -> Download!</a>';
+      }).error(function () { 
+        alert("上传失败"); 
+      }); 
+
+
+
+    }else{
+      console.log("FindinguploadFile " + document.getElementById("uploadBtn").value);
+      t1 = window.setTimeout("checkfile()",1000); 
+    }
     
   }
 </script>
