@@ -203,7 +203,7 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Adobe Premiere Project Version Converter</h3>
+              <h3 class="masthead-brand">Adobe Premiere Project Version Converter1</h3>
             </div>
           </div>
 
@@ -225,7 +225,7 @@
               </p>
 
 
-              <input type="checkbox" name="ifcompressoutput" id="ifcompressoutput">启用压缩输出(测试)
+              <input type="checkbox" name="ifcompressoutput" id="ifcompressoutput">启用压缩输出(推荐)
               <input type="file" id="uploadBtn" name="file" style="visibility:hidden;">
             </form>
           </div>
