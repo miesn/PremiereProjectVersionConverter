@@ -16,7 +16,6 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
 
     <title>Adobe Premiere Project Version Converter</title>
 
@@ -218,21 +217,23 @@
                 </div>
                 
                 <hr/>
-                Notes:请不要上传已经经过gzip解压的prproj文件。<br>
+
                 <a href="https://tools.horimediagroup.com/prconv">北京服务器(国内更快)</a>
+                <br>
+                <a href="https://tools.fhy.one/prconv">HK服务器</a>
                 <br>
                 <a href="https://fhy.one/prconv">LA服务器(海外更快)</a>
               </p>
 
 
-              <input type="checkbox" name="ifcompressoutput" id="ifcompressoutput">启用压缩输出(推荐)
+              <input type="checkbox" name="ifcompressoutput" id="ifcompressoutput" checked>启用压缩输出(推荐)
               <input type="file" id="uploadBtn" name="file" style="visibility:hidden;">
             </form>
           </div>
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>. </p>
+              <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>. 开源项目地址 <a href="https://github.com/miesn/PremiereProjectVersionConverter">Github</a></p>
             </div>
           </div>
 
@@ -246,10 +247,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
   </body>
@@ -279,7 +277,7 @@
         contentType: false, 
       }).success(function (data) { 
         console.log(data);
-        document.getElementById("buttonContent").innerHTML = '<a href="' + 'http://<?php echo $_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];  ?>' + data + '" class="btn btn-lg btn-success" ">Rightclick -> Download!</a>';
+        document.getElementById("buttonContent").innerHTML = '<a href="' + 'https://<?php echo $_SERVER['SERVER_NAME'].$_SERVER["REQUEST_URI"];  ?>' + data + '" class="btn btn-lg btn-success" ">Rightclick -> Download!</a>';
       }).error(function () { 
         alert("上传失败"); 
       }); 
